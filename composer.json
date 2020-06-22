@@ -1,0 +1,22 @@
+{
+    "name": "guyzmo-sama/cadret",
+    "description": "the big small framework",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "guyzmo",
+            "email": "yn.lemaire@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload" : {
+        "psr-4" : {
+            "Cadret\\" : "src/"
+        }
+    },
+    "require": {
+        "nikic/fast-route": "^1.3",
+        "twig/twig": "^3.0"
+    }
+}
