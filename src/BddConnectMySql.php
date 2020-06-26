@@ -11,7 +11,7 @@ class BddConnectMySql
     private static $_instance = [];
 
     /** On interdit les instances directes ! */
-    private function __construct($dbName = 0, array $connect = [])
+    private function __construct($dbName = 0, array $connect = []) 
     {
         self::$db[$dbName] = new PDO(
             $connect['dsn']??'',
@@ -19,7 +19,7 @@ class BddConnectMySql
             $connect['password']??''
         );
     }
-    
+
     /** On interdit le clonage ! */
     private function __clone() { throw new Exception('Pas de clonage possible !'); }
 
@@ -32,15 +32,14 @@ class BddConnectMySql
         return self::$db[$dbName] ?? null;
     }
 
-    
-    public static function getInstance($dbName = 0, array $connect = [])
+    public static function getInstance($dbName = 0, array $connect = []) 
     {
         if(sizeof($connect) == 0) {
             $config = include dirname(__DIR__, 4) . '/app/config.php';
             $connect = $config['mysql'] ?? [];
         }
         if (! array_key_exists($dbName, self::$_instance)) {
-            self::$_instance[$dbName] = new DatabaseMySql($dbName, $connect);
+            self::$_instance[$dbName] = new BddConnectMySql($dbName, $connect);
         }
         return self::$_instance[$dbName];
     }
